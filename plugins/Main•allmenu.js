@@ -1,12 +1,30 @@
-import fs from 'fs';
+import fetch from 'node-fetch'
+import { xpRange } from '../lib/levelling.js'
+import { promises } from 'fs'
+import { join } from 'path'
 
-let handler = async (m, { conn }) => {
-  let txt = `
-   *𝐇𝐎𝐋𝐀 𝐁𝐈𝐄𝐍𝐕𝐄𝐍𝐈𝐎/𝐀 𝐒𝐎𝐘 𝐓𝐀𝐍𝐉𝐈𝐑𝐎-𝐁𝐎𝐓-𝐌𝐃*
+let handler = async (m, { conn, usedPrefix, usedPrefix: _p, __dirname, text, command }) => {
+    try {
+    let { exp, diamantes, level, role } = global.db.data.users[m.sender]
+    let { min, xp, max } = xpRange(level, global.multiplier)
+    let name = await conn.getName(m.sender)
+    exp = exp || 'Desconocida';
+    role = role || 'Aldeano';
 
-  🌴 乂 *𝐁𝐈𝐄𝐍𝐕𝐄𝐍𝐈𝐃𝐎/𝐀 𝐄𝐒𝐓𝐄 𝐄𝐒 𝐌𝐈 𝐌𝐄𝐍𝐔* 乂 🌴
-  
-  .⁎✿ *.ᴘᴇʀFɪʟ* ✿⁎.
+    const taguser = '@' + m.sender.split('@s.whatsapp.net')[0];
+    const _uptime = process.uptime() * 1000;
+    const uptime = clockString(_uptime);
+
+    let totalreg = Object.keys(global.db.data.users).length
+    let rtotalreg = Object.values(global.db.data.users).filter(user => user.registered == true).length
+
+        await m.react('🌹')
+        let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
+        let perfil = await conn.profilePictureUrl(who, 'image').catch(_ => 'https://files.catbox.moe/ninsr8.jpg')
+
+const vid = ['https://files.catbox.moe/39rx3n.mp4', 'https://files.catbox.moe/5fbi9s.mp4', 'https://files.catbox.moe/biggyj.mp4']
+
+        let menu = ` .⁎✿ *.ᴘᴇʀFɪʟ* ✿⁎.
   .⁎✿ *.ᴍᴇɴᴜ* ✿⁎.
   .⁎✿ *.ɢʀᴜᴘᴏꜱ* ✿⁎.
   
