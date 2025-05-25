@@ -9,4 +9,4 @@
 ### **`👑 Propietario`**
 <a
 href="https://github.com/federico130"
- ><img src=.png"width="130"height="130"alt="fedelan"/></a>
+ ><img src=.https://github.com/federico130.png"width="130"height="130"alt="fedelan"/></a>
