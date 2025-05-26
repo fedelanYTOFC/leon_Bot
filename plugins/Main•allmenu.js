@@ -170,7 +170,7 @@ const vid = ['https://files.catbox.moe/39rx3n.mp4', 'https://files.catbox.moe/5f
                 isForwarded: true,
                 forwardingScore: 999,
                 externalAdReply: {
-                    title: '⏤͟͞ू⃪ ፝͜⁞Sʜᴀᴅᴏᴡ✰⃔࿐\nNᴜᴇᴠᴀ Vᴇʀsɪᴏɴ Uʟᴛʀᴀ 🌤️',
+                    title: '⏤͟͞ू⃪ ፝͜⁞leon_Bot✰⃔࿐\nNᴜᴇᴠᴀ Vᴇʀsɪᴏɴ🌤️',
                     thumbnailUrl: perfil,
                     mediaType: 1,
                     renderLargerThumbnail: false,
