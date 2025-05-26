@@ -38,7 +38,8 @@ const vid = ['https://files.catbox.moe/y2p3f7.mp4', 'https://files.catbox.moe/y2
 乂 *💎 Gemas:* ${diamantes}
 乂 *🍸 Exp:* ${exp}
 乂 *🫖 Nivel:* ${level}
-乂 *🍢 Rango:* ${role} ${readMore}
+乂 *🍢 Rango:* ${role}
+${readMore}
 
   ⏤͟͞💙⃝⃦̸̷᪶᪶ᩘ✰ *.ᴘᴇʀfɪʟ*
   ⏤͟͞💙⃝⃦̸̷᪶᪶ᩘ✰ *.ᴍᴇɴᴜ*
