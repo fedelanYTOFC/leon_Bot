@@ -24,7 +24,8 @@ let handler = async (m, { conn, usedPrefix, usedPrefix: _p, __dirname, text, com
 
 const vid = ['https://files.catbox.moe/39rx3n.mp4', 'https://files.catbox.moe/5fbi9s.mp4', 'https://files.catbox.moe/biggyj.mp4']
 
-        let menu = ` .⁎✿ *.ᴘᴇʀFɪʟ* ✿⁎.
+        let menu = `
+  .⁎✿ *.ᴘᴇʀFɪʟ* ✿⁎.
   .⁎✿ *.ᴍᴇɴᴜ* ✿⁎.
   .⁎✿ *.ɢʀᴜᴘᴏꜱ* ✿⁎.
   
