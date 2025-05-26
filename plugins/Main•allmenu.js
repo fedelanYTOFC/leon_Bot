@@ -1,3 +1,4 @@
+import fs from 'fs'
 import fetch from 'node-fetch'
 import { xpRange } from '../lib/levelling.js'
 import { promises } from 'fs'
@@ -25,6 +26,11 @@ let handler = async (m, { conn, usedPrefix, usedPrefix: _p, __dirname, text, com
 const vid = ['https://files.catbox.moe/39rx3n.mp4', 'https://files.catbox.moe/5fbi9s.mp4', 'https://files.catbox.moe/biggyj.mp4']
 
         let menu = `
+ㅤㅤㅤ⩁꯭ ͡  ͡ᩚ꯭ ꯭⩁ㅤㅤ𑁯🤍ᰍㅤㅤ⩁꯭ ͡  ͡ᩚ꯭ ꯭⩁
+೯ ׅ 👤 ¡Hᴏʟᴀ! ¿Cᴏᴍᴏ Esᴛᴀ́s? ׄ ᦡᦡ
+ㅤ꒰͜͡${taguser}
+ㅤㅤ♡𑂳ᩙㅤ ּ ${saludo} ׄ ㅤタス
+
   .⁎✿ *.ᴘᴇʀFɪʟ* ✿⁎.
   .⁎✿ *.ᴍᴇɴᴜ* ✿⁎.
   .⁎✿ *.ɢʀᴜᴘᴏꜱ* ✿⁎.
