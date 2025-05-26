@@ -28,7 +28,7 @@ apt update && apt upgrade && pkg install -y git nodejs ffmpeg imagemagick yarn
 ```
 
 ```bash
-git clone https://github.com/federicoyuki/Tanjiro_Bot && cd Tanjiro_Bot 
+git clone https://github.com/fedelanYTOFC/leon_Bot && cd leon_Bot 
 ```
 
 ```bash
@@ -52,7 +52,7 @@ Si después de instalar el bot en Termux se detiene (pantalla en blanco, pérdid
 
 1. Abre Termux y navega al directorio del bot:
     ```bash
-    cd Tanjiro_Bot
+    cd leon_Bot
     ```
 
 2. Inicia el bot nuevamente:
@@ -68,7 +68,7 @@ Si después de instalar el bot en Termux y iniciar la session del bot (el numero
 
 1. Abre Termux y navega al directorio del bot:
     ```bash
-    cd Tanjiro_Bot
+    cd leon_Bot
     ```
 
 2. Elimina la carpeta MiniSession:
@@ -85,12 +85,14 @@ Si después de instalar el bot en Termux y iniciar la session del bot (el numero
 > Si después de instalar el bot en Termux y iniciar la session del bot (deseas poner tu número es la lista de owner pon este comando:
 
    ```bash
-    cd Tanjiro_Bot && nano settings.jsmoe/1um2tn.jpg)
+    cd leon_Bot && nano settings.jsmoe/1um2tn.jpg)
 
 <priv>
  
+<details>
 
 <img src="https://github.com/AnderMendoza/AnderMendoza/raw/main/assets/line-neon.gif" width="100%">
+
 
 ## **`⚔️ 𝑷𝒓𝒐𝒑𝒊𝒆𝒕𝒂𝒓𝒊𝒐 𝑫𝒆𝒍 𝑩𝒐𝒕`**
 <a
