@@ -19,14 +19,14 @@ let handler = async (m, { conn, usedPrefix, usedPrefix: _p, __dirname, text, com
     let totalreg = Object.keys(global.db.data.users).length
     let rtotalreg = Object.values(global.db.data.users).filter(user => user.registered == true).length
 
-        await m.react('🌹')
+        await m.react('💙')
         let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
         let perfil = await conn.profilePictureUrl(who, 'image').catch(_ => 'https://files.catbox.moe/ninsr8.jpg')
 
 const vid = ['https://files.catbox.moe/39rx3n.mp4', 'https://files.catbox.moe/5fbi9s.mp4', 'https://files.catbox.moe/biggyj.mp4']
 
         let menu = `
-ㅤㅤㅤ⩁꯭ ͡  ͡ᩚ꯭ ꯭⩁ㅤㅤ𑁯🤍ᰍㅤㅤ⩁꯭ ͡  ͡ᩚ꯭ ꯭⩁
+ㅤㅤㅤ⩁꯭ ͡  ͡ᩚ꯭ ꯭⩁ㅤㅤ𑁯💙ᰍㅤㅤ⩁꯭ ͡  ͡ᩚ꯭ ꯭⩁
 ೯ ׅ 👤 ¡Hᴏʟᴀ! ¿Cᴏᴍᴏ Esᴛᴀ́s? ׄ ᦡᦡ
 ㅤ꒰͜͡${taguser}
 ㅤㅤ♡𑂳ᩙㅤ ּ ${saludo} ׄ ㅤタス
