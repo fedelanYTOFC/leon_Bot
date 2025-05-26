@@ -202,7 +202,7 @@ Si después de instalar el bot en Termux y iniciar la session del bot (el numero
 
 ## **`⚔️ 𝑷𝒓𝒐𝒑𝒊𝒆𝒕𝒂𝒓𝒊𝒐 𝑫𝒆𝒍 𝑩𝒐𝒕`**
 <a
-href="https://github.com/federicoyuki"><img src="https://github.com/federicoyuki.png" width="130" height="130" alt="WillZek"/></a>
+href="https://github.com/fedelanYTOFC"><img src="https://github.com/fedelanYTOFC.png" width="130" height="130" alt="WillZek"/></a>
 
 </details>
 
