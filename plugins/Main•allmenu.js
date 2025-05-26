@@ -35,12 +35,6 @@ const vid = ['https://files.catbox.moe/y2p3f7.mp4', 'https://files.catbox.moe/y2
 *👥 Usuarios:* ${totalreg}
 *🆙 Versión:* 3.0.0
 
-乂 *💎 Gemas:* ${diamantes}
-乂 *🍸 Exp:* ${exp}
-乂 *🫖 Nivel:* ${level}
-乂 *🍢 Rango:* ${role}
-${readMore}
-
   ⏤͟͞💙⃝⃦̸̷᪶᪶ᩘ✰ *.ᴘᴇʀfɪʟ*
   ⏤͟͞💙⃝⃦̸̷᪶᪶ᩘ✰ *.ᴍᴇɴᴜ*
   ⏤͟͞💙⃝⃦̸̷᪶᪶ᩘ✰ *.ɢʀᴜᴘᴏꜱ*
