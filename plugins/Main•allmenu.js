@@ -158,23 +158,44 @@ const vid = ['https://files.catbox.moe/39rx3n.mp4', 'https://files.catbox.moe/5f
   🌴 乂 *\`ᴀᴅᴍɪɴ\`* 乂 🌴
 
   .⁎✿ *.ᴀᴅᴅᴘʀᴇᴍ2 <@ᴛᴀɢ> <ᴅᴀʏꜱ>* ✿⁎.
-  .⁎✿ *.ᴀᴅᴅʏᴇɴ2 <@ᴛᴀɢ>* ✿⁎.`.trim();
+  .⁎✿ *.ᴀᴅᴅʏᴇɴ2 <@ᴛᴀɢ>* 
 
-  let db = JSON.parse(fs.readFileSync('src/database/db.json', 'utf-8'));
-  let videoUrl = db.links.video[0];
+  `.trim()
 
-  await conn.sendMessage(m.chat, {
-    video: { url: videoUrl },
-    caption: txt,
-    gifPlayback: true
-  }, { quoted: m });
+        await conn.sendMessage(m.chat, {
+            video: { url: vid.getRandom() }, // Vid
+            caption: menu,
+            contextInfo: {
+                mentionedJid: [m.sender],
+                isForwarded: true,
+                forwardingScore: 999,
+                externalAdReply: {
+                    title: '⏤͟͞ू⃪ ፝͜⁞Sʜᴀᴅᴏᴡ✰⃔࿐\nNᴜᴇᴠᴀ Vᴇʀsɪᴏɴ Uʟᴛʀᴀ 🌤️',
+                    thumbnailUrl: perfil,
+                    mediaType: 1,
+                    renderLargerThumbnail: false,
+                },
+            },
+            gifPlayback: true,
+            gifAttribution: 0
+        }, { quoted: null })
+    } catch (e) {
+        await m.reply(`*✖️ Ocurrió un error al enviar el menú.*\n\n${e}`)
+    }
+}
 
-  m.react('✅');
-};
-
-handler.help = ['menu'];
+handler.help = ['menuff'];
 handler.tags = ['main'];
-handler.command = ['main', 'menu', 'menuall', 'menucompleto'];
-handler.register = true
+handler.command = /^(menu|menú|memu|memú|help|info|comandos|2help|menu1.2|ayuda|commands|commandos|cmd)$/i;
+handler.fail = null;
 
 export default handler;
+
+const more = String.fromCharCode(8206)
+const readMore = more.repeat(4001)
+function clockString(ms) {
+  let h = isNaN(ms) ? '--' : Math.floor(ms / 3600000)
+  let m = isNaN(ms) ? '--' : Math.floor(ms / 60000) % 60
+  let s = isNaN(ms) ? '--' : Math.floor(ms / 1000) % 60
+  return [h, m, s].map(v => v.toString().padStart(2, 0)).join(':')
+}
