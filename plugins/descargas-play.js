@@ -1,142 +1,86 @@
+import yts from 'yt-search';
 import fetch from 'node-fetch';
+import { prepareWAMessageMedia, generateWAMessageFromContent } from '@whiskeysockets/baileys';
 
-let handler = async (m, { conn, args }) => {
-  let username = m.pushName || 'User';
-  let pp = 'https://qu.ax/hMOxx.jpg';
-  let thumbnail = await (await fetch(pp)).buffer();
+const handler = async (m, { conn, args, usedPrefix, command }) => {
+    if (!args[0]) return conn.reply(m.chat, `*${xdownload} Por favor, ingresa un título de YouTube.*\n> *\`Ejemplo:\`* ${usedPrefix + command} Corazón Serrano - Olvídalo Corazón`, m);
 
-  if (!args[0]) {
-    let txt = `✨ *Ingresa el nombre de lo que quieres buscar*`;
+    await m.react('🕓');
+    try {
+        let searchResults = await searchVideos(args.join(" "));
 
-    const anu = {
-      key: {
-        fromMe: false,
-        participant: "0@s.whatsapp.net",
-        remoteJid: "0@s.whatsapp.net"
-      },
-      message: {
-        groupInviteMessage: {
-          groupJid: "6285240750713-1610340626@g.us",
-          inviteCode: "mememteeeekkeke",
-          groupName: "P",
-          caption: "${botname}",
-          jpegThumbnail: thumbnail
-        }
-      }
-    };
+        if (!searchResults.length) throw new Error('*❌ No se encontraron resultados.*');
 
-    return conn.sendMessage(m.chat, {
-      text: txt,
-      contextInfo: {
-        forwardingScore: 999,
-        isForwarded: true,
-        forwardedNewsletterMessageInfo: {
-          newsletterJid: '120363392482966489@newsletter',
-          newsletterName: 'TANJIRO-AI 🌙',
-          serverMessageId: -1
-        }
-      }
-    }, { quoted: anu });
-  }
+        let video = searchResults[0];
+        let thumbnail = await (await fetch(video.miniatura)).buffer();
 
-  await m.react('✅');
-  try {
-    let query = args.join(" ");
-    let searchApiResponse = await fetch(`https://restapi.apibotwa.biz.id/api/search-yts?message=${encodeURIComponent(query)}`);
-    let searchResults = await searchApiResponse.json();
+        let messageText = `\`\`\`◜YouTube - Download◞\`\`\`\n\n`;
+        messageText += `*${video.titulo}*\n\n`;
+        messageText += `≡ *⏳ \`Duración\`* ${video.duracion || 'No disponible'}\n`;
+        messageText += `≡ *🌴 \`Autor\`* ${video.canal || 'Desconocido'}\n`;
+        messageText += `≡ *🌵 \`Url\`* ${video.url}\n`;
 
-    if (!searchResults.status || !searchResults.data || !searchResults.data.response || !searchResults.data.response.video || !searchResults.data.response.video.length) {
-      const anu = {
-        key: {
-          fromMe: false,
-          participant: "0@s.whatsapp.net",
-          remoteJid: "0@s.whatsapp.net"
-        },
-        message: {
-          groupInviteMessage: {
-            groupJid: "6285240750713-1610340626@g.us",
-            inviteCode: "mememteeeekkeke",
-            groupName: "P",
-            caption: "No se encontraron resultados",
-            jpegThumbnail: thumbnail
-          }
-        }
-      };
+        await conn.sendMessage(m.chat, {
+            image: thumbnail,
+            caption: messageText,
+            footer: dev,
+            contextInfo: {
+                mentionedJid: [m.sender],
+                forwardingScore: 999,
+                isForwarded: true
+            },
+            buttons: [
+                {
+                    buttonId: `${usedPrefix}ytmp3 ${video.url}`,
+                    buttonText: { displayText: '𝖠𝗎𝖽𝗂𝗈' },
+                    type: 1,
+                },
+                {
+                    buttonId: `${usedPrefix}ytmp4doc ${video.url}`,
+                    buttonText: { displayText: '𝖵𝗂𝖽𝖾𝗈' },
+                    type: 1,
+                }
+            ],
+            headerType: 1,
+            viewOnce: true
+        }, { quoted: m });
 
-      return conn.sendMessage(m.chat, {
-        text: `No se encontraron resultados, ${username}.`,
-        quoted: anu
-      }, { quoted: anu }).then(_ => m.react('✖️'));
+        await m.react('✅');
+    } catch (e) {
+        console.error(e);
+        await m.react('✖️');
+        conn.reply(m.chat, '*☁ Error al buscar el video.*', m);
     }
-
-    let video = searchResults.data.response.video[0];
-    let videoImg = await (await fetch(video.thumbnail)).buffer();
-
-    let txt = `*\`D E S C A R G A S\`*\n\n`;
-    txt += `🌙 *\`Título:\`* ${video.title}\n`;
-    txt += `🌙 *\`Duración:\`* ${parseDuration(video.duration)}\n`;
-    txt += `🌙 *\`Canal:\`* ${video.authorName || 'Desconocido'}\n`;
-    txt += `🌙 *\`Url:\`* ${video.url}\n\n`;
-
-    await conn.sendMessage(m.chat, {
-      image: videoImg,
-      caption: txt,
-      footer: 'Selecciona una opción',
-      buttons: [
-        {
-          buttonId: `.ytdlmp4 ${video.url}`,
-          buttonText: {
-            displayText: '🌙 Video',
-          },
-        },
-        {
-          buttonId: `.ytdlmp3 ${video.url}`,
-          buttonText: {
-            displayText: '🌙 Audio',
-          },
-        },
-      ],
-      viewOnce: true,
-      headerType: 4,
-    }, { quoted: m });
-
-    await m.react('✅');
-  } catch (e) {
-    console.error('Error en el handler:', e);
-    await m.react('✖️');
-
-    const anu = {
-      key: {
-        fromMe: false,
-        participant: "0@s.whatsapp.net",
-        remoteJid: "0@s.whatsapp.net"
-      },
-      message: {
-        groupInviteMessage: {
-          groupJid: "6285240750713-1610340626@g.us",
-          inviteCode: "mememteeeekkeke",
-          groupName: "P",
-          caption: "Error al buscar el video",
-          jpegThumbnail: thumbnail
-        }
-      }
-    };
-
-    conn.sendMessage(m.chat, {
-      text: `Error al buscar el video, ${username}. Verifica la consulta o inténtalo de nuevo.`,
-      quoted: anu
-    }, { quoted: anu });
-  }
 };
 
-handler.help = ['play *<texto>*'];
-handler.tags = ['dl'];
-handler.command = ['play', 'play2'];
-handler.register = true
-
+handler.help = ['play'];
+handler.tags = ['descargas'];
+handler.command = ['play'];
 export default handler;
 
-function parseDuration(duration) {
-  let parts = duration.split(':').reverse();
-  return parts.reduce((total, part, index) => total + parseInt(part) * Math.pow(60, index), 0);
+async function searchVideos(query) {
+    try {
+        const res = await yts(query);
+        return res.videos.slice(0, 10).map(video => ({
+            titulo: video.title,
+            url: video.url,
+            miniatura: video.thumbnail,
+            canal: video.author.name,
+            publicado: video.timestamp || 'No disponible',
+            vistas: video.views || 'No disponible',
+            duracion: video.duration.timestamp || 'No disponible'
+        }));
+    } catch (error) {
+        console.error('*Error en yt-search:*', error.message);
+        return [];
+    }
+}
+
+function convertTimeToSpanish(timeText) {
+    return timeText
+        .replace(/year/, 'año').replace(/years/, 'años')
+        .replace(/month/, 'mes').replace(/months/, 'meses')
+        .replace(/day/, 'día').replace(/days/, 'días')
+        .replace(/hour/, 'hora').replace(/hours/, 'horas')
+        .replace(/minute/, 'minuto').replace(/minutes/, 'minutos');
 }
