@@ -1,5 +1,4 @@
 ## `【👑】TANJIRO-BOT`
-![Pene](https://files.catbox.T`
 ![Pene](https://files.catbox.moe/1um2tn.jpg)
 
 <priv>
