@@ -12,7 +12,7 @@ let handler = async (m, { conn, usedPrefix, text, args, command }) => {
     let list = [{
         displayName: "fedelanYT",
         vcard: `BEGIN:VCARD\nVERSION:3.0\nFN: fedelanYT
-\nitem1.TEL;waid=5491156178758:5491156178758\nitem1.X-ABLabel:Número\nitem2.EMAIL;type=INTERNET: cristianescobar.vx@gmail.com\nitem2.X-ABLabel:Email\nitem3.URL:https://www.instagram.com/dev.criss_vx\nitem3.X-ABLabel:Internet\nitem4.ADR:;; Argentina 🇦🇷;;;;\nitem4.X-ABLabel:Region\nEND:VCARD`,
+\nitem1.TEL;waid=5491156178758:5491156178758\nitem1.X-ABLabel:Número\nitem2.EMAIL;type=INTERNET: vigevanif228@gmail.com\nitem2.X-ABLabel:Email\nitem3.URL:https://www.instagram.com/dev.criss_vx\nitem3.X-ABLabel:Internet\nitem4.ADR:;; Argentina 🇦🇷;;;;\nitem4.X-ABLabel:Region\nEND:VCARD`,
     }];
 
     await conn.sendMessage(m.chat, {
@@ -23,10 +23,10 @@ let handler = async (m, { conn, usedPrefix, text, args, command }) => {
         contextInfo: {
             externalAdReply: {
                 showAdAttribution: true,
-                title: 'Hello, I am the official creator of Shadow Ultra.',
+                title: 'Hello, I am the official creator of leon Bot.',
                 body: dev,
                 thumbnailUrl: 'https://files.catbox.moe/8an9fs.jpg',
-                sourceUrl: 'https://wa.me/51927238856?text=Hola+quiero+adquirir+bot',
+                sourceUrl: 'https://wa.me/5491156178758?text=Hola+quiero+adquirir+bot',
                 mediaType: 1,
                 renderLargerThumbnail: true
             }
